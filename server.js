@@ -16,11 +16,11 @@ mongoose
     console.log("can't contected to database");
   });
 
-  // middlerwares connects  
+// middlerwares connects
 app.use(express.json());
 app.use(
   session({
-    name: "sid",
+    name: "todo-application-session-key",
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
@@ -31,7 +31,7 @@ app.use(
   })
 );
 
-// router file imports 
+// router file imports
 const loginRouter = require("./routes/loginRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const registerRouter = require("./routes/registerRouter");

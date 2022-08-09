@@ -36,6 +36,7 @@ const getListHendler = async (req, res) => {
       const updateTodo = filterCurrentUserTodo.filter(
         (todo) => todo.createdAt.toString() === todo.updatedAt.toString()
       );
+      delete updateTodo.user;
       res.status(200).json(updateTodo);
 
       // this is working user request no query and user hit root todo api url
@@ -111,6 +112,9 @@ const putHendler = async (req, res) => {
   }
 };
 
+
+
+// delete handler 
 const deleteHendler = async (req, res) => {
   try {
     const { _id } = req.params;

@@ -24,7 +24,7 @@ const loginHendler = async (req, res) => {
       res.status(500).json({ error: "There was a server said problem" });
     }
   } else {
-    res.status(400).json({ error: "You are alrady login" });
+    res.status(404).json({ error: "You are alrady login" });
   }
 };
 

@@ -1,4 +1,19 @@
 {
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "this application working user login system todo add delete update system",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "todo"
+  ],
+  "author": "Forhadul Islam",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
@@ -7,20 +22,5 @@
     "mongoose": "^6.5.1",
     "nodemon": "^2.0.19",
     "uuid": "^8.3.2"
-  },
-  "scripts": {
-    "start": "nodemon server.js"
-  },
-  "name": "todo",
-  "version": "1.0.0",
-  "description": "this application working user login system todo add delete update system",
-  "main": "server.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "keywords": [
-    "todo"
-  ],
-  "author": "Forhadul Islam",
-  "license": "ISC"
+  }
 }

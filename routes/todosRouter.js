@@ -1,3 +1,4 @@
+const Router = require("express").Router();
 const {
   getListHendler,
   singleGetHendler,
@@ -5,8 +6,6 @@ const {
   putHendler,
   deleteHendler,
 } = require("../controller/todoHendler");
-
-const Router = require("express").Router();
 
 // list get todo request working
 Router.get("/", getListHendler);
