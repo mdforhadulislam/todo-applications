@@ -17,6 +17,7 @@ mongoose
   });
 
 // middlerwares connects
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
   session({
@@ -46,6 +47,7 @@ app.use("/todos/", ckeckLogin, todosRouter);
 app.get("/", (req, res) => {
   res.send(req.session);
 });
+
 
 app.listen(process.env.PROT || 3000, () => {
   console.log(

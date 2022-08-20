@@ -112,8 +112,6 @@ const putHendler = async (req, res) => {
   }
 };
 
-
-
 // delete handler 
 const deleteHendler = async (req, res) => {
   try {
