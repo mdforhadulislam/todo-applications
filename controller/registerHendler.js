@@ -3,14 +3,15 @@ const { convartHash } = require("../common");
 const User = require("../models/User");
 
 const registerHendler = async (req, res) => {
+  // set to access api 
+  res.set('Access-Control-Allow-Origin', '*');
+
   let isRegister = false;
   try {
     const { name, username, email, password } = req.body;
 
     const emailToFindUser = await User.findOne({ email });
     const userNameToFindUser = await User.findOne({ username });
-    console.log(emailToFindUser, userNameToFindUser);
-
     if (emailToFindUser) {
       res.status(403).json({ error: "This Email Alrady Used" });
     }
@@ -21,11 +22,9 @@ const registerHendler = async (req, res) => {
       res.status(403).json({ error: "This email and username alrady used" });
     }
     if (!emailToFindUser && !userNameToFindUser) {
-      console.log(isRegister);
       isRegister = !isRegister;
     }
 
-    console.log(isRegister, name, username, email, password);
     if (isRegister && name && username && email && password) {
       const user = new User({
         name: name,

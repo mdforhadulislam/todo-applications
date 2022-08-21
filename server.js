@@ -45,9 +45,11 @@ app.use("/auth/logout/", ckeckLogin, logoutRouter);
 app.use("/todos/", ckeckLogin, todosRouter);
 
 app.get("/", (req, res) => {
+  // set to access api
+  res.set("Access-Control-Allow-Origin", "*");
+
   res.send(req.session);
 });
-
 
 app.listen(process.env.PROT || 3000, () => {
   console.log(
