@@ -3,9 +3,6 @@ const Todo = require("../models/Todo");
 // all todo get
 const getListHendler = async (req, res) => {
   
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
-
   try {
     const todos = await Todo.find();
     const filterCurrentUserTodo = todos.filter(
@@ -60,9 +57,6 @@ const getListHendler = async (req, res) => {
 // single todo get
 const singleGetHendler = async (req, res) => {
   
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
-
 
   try {
     const { _id } = req.params;
@@ -82,9 +76,6 @@ const singleGetHendler = async (req, res) => {
 const postHendler = async (req, res) => {
 
   
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
-
 
   const { task, done } = req.body;
   try {
@@ -110,9 +101,6 @@ const postHendler = async (req, res) => {
 // update todo
 const putHendler = async (req, res) => {
   
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
-
 
   try {
     const { _id } = req.params;
@@ -135,9 +123,6 @@ const putHendler = async (req, res) => {
 // delete handler 
 const deleteHendler = async (req, res) => {
   
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
-
 
   try {
     const { _id } = req.params;

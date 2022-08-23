@@ -3,9 +3,6 @@ const { convartHash } = require("../common");
 const User = require("../models/User");
 
 const registerHendler = async (req, res) => {
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
-
   let isRegister = false;
   try {
     const { name, username, email, password } = req.body;

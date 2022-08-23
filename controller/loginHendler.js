@@ -3,8 +3,6 @@ const User = require("../models/User");
 
 const loginHendler = async (req, res) => {
   
-  // set to access api 
-  res.set('Access-Control-Allow-Origin', '*');
 
   if (!req.session.user) {
     try {
