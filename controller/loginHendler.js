@@ -14,7 +14,7 @@ const loginHendler = async (req, res) => {
           };
           res
             .status(200)
-            .json({ message: "Successfully Login", cookie: req.session });
+            .json({ message: "Successfully Login", cookie:{...req.session} });
           return;
         } else {
           res.status(403).json({ error: "password Is not Mathch" });
