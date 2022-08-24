@@ -3,6 +3,7 @@ const app = express();
 const { ckeckLogin } = require("./middlewares/checkLogin");
 const session = require("express-session");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -17,6 +18,7 @@ mongoose
   });
 
 // middlerwares connects
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(
