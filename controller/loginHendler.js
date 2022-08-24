@@ -2,8 +2,6 @@ const { convartHash, compare } = require("../common");
 const User = require("../models/User");
 
 const loginHendler = async (req, res) => {
-  
-
   if (!req.session.user) {
     try {
       const { email, password } = req.body;
@@ -14,10 +12,9 @@ const loginHendler = async (req, res) => {
             email: user.email,
             username: user.username,
           };
-          res.status(200).json({ message: "Successfully Login" ,cookie:{
-            email: user.email,
-            username: user.username,
-          }});
+          res
+            .status(200)
+            .json({ message: "Successfully Login", cookie: req.session });
           return;
         } else {
           res.status(403).json({ error: "password Is not Mathch" });
