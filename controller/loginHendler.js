@@ -12,9 +12,9 @@ const loginHendler = async (req, res) => {
             email: user.email,
             username: user.username,
           };
-          res
-            .status(200)
-            .json({ message: "Successfully Login", cookie:{...req.session} });
+          res.status(200).json({
+            message: "Successfully Login",
+          });
           return;
         } else {
           res.status(403).json({ error: "password Is not Mathch" });

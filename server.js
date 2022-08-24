@@ -4,6 +4,7 @@ const { ckeckLogin } = require("./middlewares/checkLogin");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 require("dotenv").config();
 
@@ -19,8 +20,8 @@ mongoose
 
 // middlerwares connects
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(
   session({
     name: "todo-application-session-key",
