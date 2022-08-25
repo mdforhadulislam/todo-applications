@@ -1,11 +1,9 @@
 const express = require("express");
 const app = express();
 const { ckeckLogin } = require("./middlewares/checkLogin");
-const session = require("express-session");
+// const session = require("express-session");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bodyParser = require("body-parser");
-
 require("dotenv").config();
 
 // database conectation
@@ -22,18 +20,18 @@ mongoose
 app.use(cors());
 app.use(express.json());
 
-app.use(
-  session({
-    name: "todo-application-session-key",
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 8800,
-      sameSite: true,
-    },
-  })
-);
+// app.use(
+//   session({
+//     name: "todo-application-session-key",
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//       maxAge: 1000 * 60 * 60 * 8800,
+//       sameSite: true,
+//     },
+//   })
+// );
 
 // router file imports
 const loginRouter = require("./routes/loginRouter");
@@ -48,7 +46,8 @@ app.use("/auth/logout/", ckeckLogin, logoutRouter);
 app.use("/todos/", ckeckLogin, todosRouter);
 
 app.get("/", (req, res) => {
-  res.send(req.session);
+  console.log(req.user);
+  res.send("get");
 });
 
 app.listen(process.env.PROT || 3000, () => {
@@ -56,3 +55,6 @@ app.listen(process.env.PROT || 3000, () => {
     `server is running on http://localhost:${process.env.PORT || 3000}/`
   );
 });
+
+// jwt
+// meddelweir

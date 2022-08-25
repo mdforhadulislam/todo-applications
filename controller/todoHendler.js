@@ -2,13 +2,12 @@ const Todo = require("../models/Todo");
 
 // all todo get
 const getListHendler = async (req, res) => {
-  
   try {
     const todos = await Todo.find();
     const filterCurrentUserTodo = todos.filter(
       (item) =>
-        item.user.email === req.session.user.email &&
-        item.user.username === req.session.user.username
+        item.user.email === req.user.email &&
+        item.user.username === req.user.username
     );
 
     // this statement working filter done todo value true
@@ -56,8 +55,6 @@ const getListHendler = async (req, res) => {
 
 // single todo get
 const singleGetHendler = async (req, res) => {
-  
-
   try {
     const { _id } = req.params;
     const todo = await Todo.findById(_id);
@@ -74,9 +71,6 @@ const singleGetHendler = async (req, res) => {
 
 // create todo
 const postHendler = async (req, res) => {
-
-  
-
   const { task, done } = req.body;
   try {
     if (task && done) {
@@ -84,8 +78,8 @@ const postHendler = async (req, res) => {
         task: task,
         done: done,
         user: {
-          email: req.session.user.email,
-          username: req.session.user.username,
+          email: req.user.email,
+          username: req.user.username,
         },
       });
       const newTodo = await todo.save();
@@ -100,12 +94,10 @@ const postHendler = async (req, res) => {
 
 // update todo
 const putHendler = async (req, res) => {
-  
-
   try {
     const { _id } = req.params;
     const todo = await Todo.findById(_id);
-    if (todo.user.email === req.session.user.email) {
+    if (todo.user.email === req.user.email) {
       todo.task = req.body.task;
       todo.done = req.body.done;
 
@@ -120,15 +112,13 @@ const putHendler = async (req, res) => {
   }
 };
 
-// delete handler 
+// delete handler
 const deleteHendler = async (req, res) => {
-  
-
   try {
     const { _id } = req.params;
     const deletedTodo = await Todo.findByIdAndDelete(_id);
 
-    if (deletedTodo.user.email === req.session.user.email) {
+    if (deletedTodo.user.email === req.user.email) {
       if (deletedTodo) {
         return res
           .status(200)
